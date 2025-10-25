@@ -1,7 +1,10 @@
 "use client"; 
-import { useState, ChangeEvent } from "react"; 
+import React, { useState, ChangeEvent } from "react";  
 
-type CounterProps = { initialCount?: number; initialStep?: number }; 
+type CounterProps = 
+{ initialCount?: number; 
+    initialStep?: number;
+ }; 
 
 export default function Counter({ initialCount = 0, initialStep =1}: CounterProps) {
     const clamp = (n: number) => (Number.isFinite(n) && n>=1 ? Math.floor(n) : 1);
@@ -14,20 +17,21 @@ export default function Counter({ initialCount = 0, initialStep =1}: CounterProp
     const inc = () => setCount(c => c + step);
     const dec = () => {if (canDec) setCount(c => c - step)};
     const reset = () => setCount(0); 
-    const onStep = (e: ChangeEvent<HTMLInputElement>) => {setStep(clamp(Number(e.target.value)))
+    const onStep = (e: ChangeEvent<HTMLInputElement>) => 
+        { setStep(clamp(Number(e.target.value))); };
     
-    return( 
-        <section> 
-        {/* aria-live so SRs announces changes */}
-        <p aria-live="polite">Count: {count}</p> 
-
-        <div> 
-            <button onClick={inc}>+{step}</button>
-            <button onClick={dec} disabled={!canDec} aria-disabled={!canDec}>-{step}</button>
-            <button onClick={reset}>Reset</button>
-        </div>
-        
-
-    
-
-    
+    return React.createElement(
+        "section",
+        null,
+        React.createElement("p", { "aria-live": "polite" }, "Count: " + count),
+        React.createElement(
+            "div",
+            null,
+            React.createElement("button", { onClick: inc }, "+" + String(step)),
+            React.createElement("button", { onClick: dec, disabled: !canDec, "aria-disabled": !canDec }, "-" + String(step)),
+            React.createElement("button", { onClick: reset }, "Reset")
+        ),
+        React.createElement("label", { htmlFor: "step" }, "Step"),
+        React.createElement("input", { id: "step", type: "number", min: 1, value: step, onChange: onStep })
+    );
+}
