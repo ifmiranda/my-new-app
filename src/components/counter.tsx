@@ -16,6 +16,11 @@ export default function Counter({ initialCount = 0, initialStep =1}: CounterProp
     const reset = () => setCount(0); 
     const onStep = (e: ChangeEvent<HTMLInputElement>) => {setStep(clamp(Number(e.target.value)))
     
-        
-    }
-}
+    return( 
+        <section> 
+        {/* aria-live so SRs announces changes */}
+        <p aria-live="polite">Count: {count}</p>
+
+    
+
+    
