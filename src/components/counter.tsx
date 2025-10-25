@@ -19,7 +19,14 @@ export default function Counter({ initialCount = 0, initialStep =1}: CounterProp
     return( 
         <section> 
         {/* aria-live so SRs announces changes */}
-        <p aria-live="polite">Count: {count}</p>
+        <p aria-live="polite">Count: {count}</p> 
+
+        <div> 
+            <button onClick={inc}>+{step}</button>
+            <button onClick={dec} disabled={!canDec} aria-disabled={!canDec}>-{step}</button>
+            <button onClick={reset}>Reset</button>
+        </div>
+        
 
     
 
