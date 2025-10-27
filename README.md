@@ -1,6 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+A simple Next.js (App Router) web app that renders a reusable Button Counter component.  
+Built to demonstrate React state management, accessibility, and clean component structure using Next.js 14 with TypeScript support.
+
 
 First, run the development server:
 
@@ -11,7 +14,12 @@ yarn dev
 # or
 pnpm dev
 # or
-bun dev
+bun dev 
+
+Known Issues/Limitations
+-No data persistence 
+-Styling kept minimal 
+-Accepts only decimal 
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
